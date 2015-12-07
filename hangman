@@ -10,7 +10,17 @@
 
 import random
 words = ['rain', 'sun', 'happy', 'sad', 'enlightened', 'motivated', 'coffee', 'starbucks', 'work', 'engineering', 'computers', 'McPherson', 'study', 'finals', 'beautiful', 'winter', 'umbrella', 'cake', 'motivated', 'blacksburg', 'hunger']
-print "Welcome to Python hangman!"
 indice = random.randrange(0,20)
+newWord = words[indice]
+displayWord = []
+displayWord[len(newWord)]   
+m = 0
+for i in range(len(newWord)):
+	displayWord[m] = '_'
+	m = m + 1
+
+
+print "Welcome to Python hangman!"
 print "Your word is:",
-print words[indice]
+print newWord
+print displayWord
