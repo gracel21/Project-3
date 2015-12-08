@@ -9,18 +9,47 @@
 #There are 21 words in the word bank
 
 import random
-words = ['rain', 'sun', 'happy', 'sad', 'enlightened', 'motivated', 'coffee', 'starbucks', 'work', 'engineering', 'computers', 'McPherson', 'study', 'finals', 'beautiful', 'winter', 'umbrella', 'cake', 'motivated', 'blacksburg', 'hunger']
+words = ['rain', 'sun', 'happy', 'sad', 'enlightened', 'motivated', 'coffee', 'starbucks', 'work', 'engineering', 'computers', 'ramen', 'study', 'finals', 'beautiful', 'winter', 'umbrella', 'cake', 'motivated', 'blacksburg', 'hunger']
 indice = random.randrange(0,20)
 newWord = words[indice]
-displayWord = []
-displayWord[len(newWord)]   
+displayWord=[]  
 m = 0
 for i in range(len(newWord)):
-	displayWord[m] = '_'
+	displayWord.append("_")
 	m = m + 1
+attempts = 10
 
+print "\n\nWelcome to Python hangman!"
 
-print "Welcome to Python hangman!"
-print "Your word is:",
-print newWord
-print displayWord
+while attempts > 0:
+	print "Your word is:",
+	print displayWord[:]
+	print 'You have', attempts,
+	print 'attempts remaining'
+	guess = raw_input('Enter a letter:').lower()
+	
+	j = 0
+	x = 0 
+	for letter in newWord:
+		if guess == newWord[j]:
+			displayWord[j] = guess
+			j = j + 1
+		else:
+			j = j + 1
+			x = x + 1
+	k = 0
+	y = 0
+	for letters in newWord:
+		if newWord[k] == displayWord[k]:
+			y = y + 1
+		k = k + 1	
+	if y == len(newWord):
+		attempts = 0
+		print "\nCongratulations! You've won!"
+		print 'Your word was:', newWord
+	elif x == len(newWord):
+		attempts = attempts - 1
+	
+if y != len(newWord):
+	print "\nSorry. You've run out of attempts"
+	print 'Your word was:', newWord
